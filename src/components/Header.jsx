@@ -1,4 +1,5 @@
 import { useLocation, Link } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 export default function Header({ toggleTheme, isDark }) {
   const location = useLocation();
@@ -42,12 +43,13 @@ export default function Header({ toggleTheme, isDark }) {
           })}
         </div>
 
-        <button
+        {/* <button
           onClick={toggleTheme}
           className="text-xs sm:text-sm px-3 py-1 rounded bg-gray-200 dark:bg-gray-700"
         >
           {isDark ? '🌞 Light Mode' : '🌙 Dark Mode'}
-        </button>
+        </button> */}
+          <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
       </nav>
 
       <div className="text-center">
