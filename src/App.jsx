@@ -1,37 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import SkipCard from './components/SkipCard';
+import Header from './components/Header';
+import BottomBar from './components/BottomBar';
+import { useTheme } from './hooks/useTheme';
+import { getSkips } from './utils/api';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [skips, setSkips] = useState([]);
+  const [selected, setSelected] = useState(null);
+  const { isDark, toggleTheme } = useTheme();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getSkips().then(setSkips).catch(console.error);
+  }, []);
+
+  const handleContinue = (e) => {
+    e.preventDefault()
+    navigate("/404"); // Simulate next step
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+      <div className="p-4">
+        <Header toggleTheme={toggleTheme} isDark={isDark} />
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {skips.map((skip) => (
+            <SkipCard
+              key={skip.id}
+              size={skip.size}
+              price={skip.price_before_vat * 1.2}
+              hireDays={skip.hire_period_days}
+              onRoad={skip.allowed_on_road}
+              heavy={skip.allows_heavy_waste}
+              isSelected={selected?.id === skip.id}
+              onSelect={() => setSelected(skip)}
+            />
+          ))}
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded">
-  Test Tailwind Button
-</button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <BottomBar
+        selected={selected}
+        onBack={() => setSelected(null)}
+        onContinue={handleContinue}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
