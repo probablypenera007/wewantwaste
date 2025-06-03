@@ -18,7 +18,7 @@ function App() {
 
   const handleContinue = (e) => {
     e.preventDefault()
-    navigate("/404"); // Simulate next step
+    navigate("/404");
   };
 
   return (

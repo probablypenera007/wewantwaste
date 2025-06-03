@@ -1,16 +1,16 @@
-import { useLocation, Link } from 'react-router-dom';
-import ThemeToggle from './ThemeToggle';
+import { useLocation, Link } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Header({ toggleTheme, isDark }) {
   const location = useLocation();
 
   const steps = [
-    { label: 'Postcode', path: '/' },
-    { label: 'Waste Type', path: '/' },
-    { label: 'Select Skip', path: '/' },
-    { label: 'Permit Check', path: '/404' },
-    { label: 'Choose Date', path: null },
-    { label: 'Payment', path: null },
+    { label: "Postcode", path: "/" },
+    { label: "Waste Type", path: "/" },
+    { label: "Select Skip", path: "/" },
+    { label: "Permit Check", path: "/404" },
+    { label: "Choose Date", path: null },
+    { label: "Payment", path: null },
   ];
 
   return (
@@ -26,8 +26,8 @@ export default function Header({ toggleTheme, isDark }) {
                 to={step.path}
                 className={`flex items-center gap-1 ${
                   isActive
-                    ? 'text-blue-500 font-medium border-b border-blue-500'
-                    : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'
+                    ? "text-blue-500 font-medium border-b border-blue-500"
+                    : "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
                 }`}
               >
                 <span>•</span> {step.label}
@@ -42,14 +42,7 @@ export default function Header({ toggleTheme, isDark }) {
             );
           })}
         </div>
-
-        {/* <button
-          onClick={toggleTheme}
-          className="text-xs sm:text-sm px-3 py-1 rounded bg-gray-200 dark:bg-gray-700"
-        >
-          {isDark ? '🌞 Light Mode' : '🌙 Dark Mode'}
-        </button> */}
-          <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
+        <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
       </nav>
 
       <div className="text-center">

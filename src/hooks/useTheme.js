@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export function useTheme() {
   const [isDark, setIsDark] = useState(() => {
     const stored = localStorage.getItem("theme");
-    return stored ? JSON.parse(stored) : false; 
+    return stored ? JSON.parse(stored) : false;
   });
 
   useEffect(() => {
@@ -18,5 +18,5 @@ export function useTheme() {
     localStorage.setItem("theme", JSON.stringify(isDark));
   }, [isDark]);
 
-  return { isDark, toggleTheme: () => setIsDark(prev => !prev) };
+  return { isDark, toggleTheme: () => setIsDark((prev) => !prev) };
 }

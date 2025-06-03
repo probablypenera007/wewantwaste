@@ -1,5 +1,5 @@
-import Header from '../components/Header';
-import { useTheme } from '../hooks/useTheme';
+import Header from "../components/Header";
+import { useTheme } from "../hooks/useTheme";
 
 export default function NotFound() {
   const { isDark, toggleTheme } = useTheme();
