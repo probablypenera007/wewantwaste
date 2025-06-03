@@ -1,3 +1,5 @@
+import { skipImages } from '../assets';
+
 export default function SkipCard({
   size,
   price,
@@ -7,6 +9,8 @@ export default function SkipCard({
   isSelected,
   onSelect,
 }) {
+  const image = skipImages[size];
+
   return (
     <div
       className={`border rounded-xl p-4 shadow-sm transition hover:shadow-md cursor-pointer ${
@@ -16,6 +20,13 @@ export default function SkipCard({
       }`}
       onClick={onSelect}
     >
+      {image && (
+        <img
+          src={image}
+          alt={`${size} Yard Skip`}
+          className="rounded-lg mb-3 w-full h-40 object-cover"
+        />
+      )}
       <h3 className="text-xl font-semibold">{size} Yard Skip</h3>
       <p className="text-sm text-gray-500">{hireDays} day hire</p>
       <p className="text-lg font-bold mt-2 text-blue-600">
