@@ -32,17 +32,17 @@ export default function SkipCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent rounded-3xl flex flex-col justify-between p-5 transition-all">
           {/* Header Tags */}
           <div className="flex justify-between items-start">
-            <div className="bg-white/10 backdrop-blur px-3 py-1 text-xs text-white rounded-full font-semibold uppercase tracking-widest">
+            <div className="bg-white/10 backdrop-blur px-3 py-1 text-sm text-white rounded-full font-semibold uppercase tracking-widest">
               {size} Yards
             </div>
-            <div className="bg-blue-600 text-white text-sm px-3 py-1 rounded-full font-bold shadow">
+            <div className="bg-blue-600 text-white text-md px-3 py-1 rounded-full font-bold shadow">
               £{price.toFixed(2)}
             </div>
           </div>
 
           {/* Info Tags */}
           <div className="space-y-2 mt-auto">
-            <p className="text-sm text-gray-200">
+            <p className="text-md text-gray-200">
               {hireDays} day hire period
             </p>
             <div className="flex flex-wrap gap-2 text-[11px] font-semibold uppercase">
@@ -70,7 +70,7 @@ export default function SkipCard({
           {/* Footer CTA */}
           <button
             disabled={isSelected}
-            className={`w-full mt-4 py-2 rounded-md font-bold text-sm transition-all shadow-lg ${
+            className={`w-full mt-4 py-2 rounded-md font-bold text-md transition-all shadow-lg ${
               isSelected
                 ? "bg-blue-600 text-white cursor-default"
                 : "bg-white/80 text-black hover:bg-white hover:scale-[1.01]"

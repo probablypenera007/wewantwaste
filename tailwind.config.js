@@ -6,7 +6,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+       animation: {
+        'text-glow': 'pulse 2.5s ease-in-out infinite',
+      },
+    },
   },
   plugins: [],
 }
