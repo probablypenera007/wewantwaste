@@ -4,6 +4,10 @@ This project is a complete visual overhaul of the **"Choose Your Skip Size"** pa
 
 ---
 
+🌐 **Live Demo**:  
+[https://wewantwaste-e9s7ms2mv-probablypenera007s-projects.vercel.app/](https://wewantwaste-e9s7ms2mv-probablypenera007s-projects.vercel.app/)
+
+
 ## 🧠 My Approach
 
 The main goal was to improve the **aesthetic appeal**, **responsiveness**, and **user interactivity** of the skip selection screen while keeping the original flow intuitive and functional.
