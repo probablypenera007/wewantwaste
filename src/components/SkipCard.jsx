@@ -1,4 +1,4 @@
-import { skipImages } from '../assets';
+import { skipImages } from "../assets";
 
 export default function SkipCard({
   size,
@@ -14,72 +14,72 @@ export default function SkipCard({
   return (
     <div
       onClick={onSelect}
-      className={`group relative flex flex-col justify-between border rounded-2xl p-4 shadow-md transition-all duration-300 hover:shadow-xl cursor-pointer ${
-        isSelected
-          ? "border-blue-600 bg-blue-50 dark:bg-blue-900"
-          : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800"
+      className={`relative group cursor-pointer transition-all duration-500 ${
+        isSelected ? "scale-[1.04] ring-2 ring-blue-500 z-30" : "hover:scale-[1.01]"
       }`}
     >
-      {/* Image */}
-      {image && (
-        <div className="relative w-full h-44 overflow-hidden rounded-xl mb-4">
+      <div className="relative w-full h-[420px] overflow-hidden rounded-3xl shadow-lg">
+        {/* Image Background */}
+        {image && (
           <img
             src={image}
             alt={`${size} Yard Skip`}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <span className="absolute top-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-md shadow-sm font-medium">
-            {size} Yards
-          </span>
+        )}
+
+        {/* Overlay Glass Info */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent rounded-3xl flex flex-col justify-between p-5 transition-all">
+          {/* Header Tags */}
+          <div className="flex justify-between items-start">
+            <div className="bg-white/10 backdrop-blur px-3 py-1 text-xs text-white rounded-full font-semibold uppercase tracking-widest">
+              {size} Yards
+            </div>
+            <div className="bg-blue-600 text-white text-sm px-3 py-1 rounded-full font-bold shadow">
+              £{price.toFixed(2)}
+            </div>
+          </div>
+
+          {/* Info Tags */}
+          <div className="space-y-2 mt-auto">
+            <p className="text-sm text-gray-200">
+              {hireDays} day hire period
+            </p>
+            <div className="flex flex-wrap gap-2 text-[11px] font-semibold uppercase">
+              <span
+                className={`px-3 py-1 rounded-full ${
+                  onRoad
+                    ? "bg-green-600/20 text-green-300"
+                    : "bg-red-600/20 text-red-300"
+                }`}
+              >
+                {onRoad ? "Road Legal" : "Not Road Legal"}
+              </span>
+              <span
+                className={`px-3 py-1 rounded-full ${
+                  heavy
+                    ? "bg-blue-600/20 text-blue-300"
+                    : "bg-yellow-600/20 text-yellow-300"
+                }`}
+              >
+                {heavy ? "Heavy Waste" : "Light Waste Only"}
+              </span>
+            </div>
+          </div>
+
+          {/* Footer CTA */}
+          <button
+            disabled={isSelected}
+            className={`w-full mt-4 py-2 rounded-md font-bold text-sm transition-all shadow-lg ${
+              isSelected
+                ? "bg-blue-600 text-white cursor-default"
+                : "bg-white/80 text-black hover:bg-white hover:scale-[1.01]"
+            }`}
+          >
+            {isSelected ? "✓ Selected" : "Select This Skip"}
+          </button>
         </div>
-      )}
-
-      {/* Details */}
-      <div className="mb-4">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-          {size} Yard Skip
-        </h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400">
-          {hireDays} day hire period
-        </p>
-        <p className="mt-2 text-xl font-bold text-blue-600">
-          £{price.toFixed(2)}
-        </p>
       </div>
-
-      {/* Status */}
-      <div className="flex justify-between gap-2 text-xs font-medium mb-4">
-        <span
-          className={`px-3 py-1 rounded-full ${
-            onRoad
-              ? "bg-green-100 text-green-700"
-              : "bg-red-100 text-red-600"
-          }`}
-        >
-          {onRoad ? "Road Legal" : "Not Allowed On Road"}
-        </span>
-        <span
-          className={`px-3 py-1 rounded-full ${
-            heavy
-              ? "bg-blue-100 text-blue-700"
-              : "bg-yellow-100 text-yellow-700"
-          }`}
-        >
-          {heavy ? "Heavy Waste OK" : "Light Waste Only"}
-        </span>
-      </div>
-
-      {/* CTA Button */}
-      <button
-        className={`w-full py-2 rounded-lg font-semibold transition-all duration-200 ${
-          isSelected
-            ? "bg-blue-600 text-white cursor-default"
-            : "bg-gray-900 text-white dark:bg-gray-700 hover:opacity-90"
-        }`}
-        disabled={isSelected}
-      >
-        {isSelected ? "Selected" : "Select This Skip"}
-      </button>
     </div>
   );
 }
