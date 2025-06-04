@@ -2,23 +2,18 @@ export default function BottomBar({ selected, onBack, onContinue }) {
   if (!selected) return null;
 
   return (
-    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[95%] w-[98%] sm:w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%]bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-gray-300/20 dark:border-white/10 rounded-xl shadow-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 z-50 animate-slide-up">
-      <div className="text-md sm:text-base text-center sm:text-left text-gray-800 dark:text-gray-100 font-medium">
-        {selected.size} Yard Skip • £
-        {(selected.price_before_vat * 1.2).toFixed(2)} for{" "}
-        {selected.hire_period_days} days
+    <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] glass-card rounded-2xl shadow-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6 z-50 animate-slide-up">
+      <div className="text-lg sm:text-xl text-center sm:text-left font-medium">
+        <span className="text-blue-600 dark:text-blue-400">{selected.size} Yard Skip</span>
+        <span className="mx-2">•</span>
+        <span className="font-bold">£{(selected.price_before_vat * 1.2).toFixed(2)}</span>
+        <span className="text-gray-600 dark:text-gray-400"> for {selected.hire_period_days} days</span>
       </div>
-      <div className="flex gap-2 w-full sm:w-auto justify-center sm:justify-end">
-        <button
-          onClick={onBack}
-          className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
-        >
+      <div className="flex gap-4 w-full sm:w-auto justify-center sm:justify-end">
+        <button onClick={onBack} className="btn-secondary">
           Back
         </button>
-        <button
-          onClick={onContinue}
-          className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition font-semibold shadow-md"
-        >
+        <button onClick={onContinue} className="btn-primary">
           Continue →
         </button>
       </div>

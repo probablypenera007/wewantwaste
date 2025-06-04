@@ -14,52 +14,50 @@ export default function SkipCard({
   return (
     <div
       onClick={onSelect}
-      className={`relative group cursor-pointer transition-all duration-500 ${
-        isSelected ? "scale-[1.04] ring-2 ring-blue-500 z-30" : "hover:scale-[1.01]"
+      className={`relative group cursor-pointer transition-all duration-500 animate-float ${
+        isSelected 
+          ? "scale-[1.02] ring-2 ring-blue-500/50 dark:ring-blue-400/50 z-30" 
+          : "hover:scale-[1.01]"
       }`}
     >
-      <div className="relative w-full h-[420px] overflow-hidden rounded-3xl shadow-lg">
-        {/* Image Background */}
+      <div className="relative w-full h-[420px] overflow-hidden rounded-2xl shadow-xl">
         {image && (
           <img
             src={image}
             alt={`${size} Yard Skip`}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
         )}
 
-        {/* Overlay Glass Info */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent rounded-3xl flex flex-col justify-between p-5 transition-all">
-          {/* Header Tags */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent rounded-2xl flex flex-col justify-between p-6">
           <div className="flex justify-between items-start">
-            <div className="bg-white/10 backdrop-blur px-3 py-1 text-sm text-white rounded-full font-semibold uppercase tracking-widest">
+            <div className="glass-card px-4 py-2 text-sm text-white rounded-full font-medium tracking-wide">
               {size} Yards
             </div>
-            <div className="bg-blue-600 text-white text-md px-3 py-1 rounded-full font-bold shadow">
+            <div className="glass-card bg-blue-600/90 text-white text-lg px-4 py-2 rounded-full font-bold">
               £{price.toFixed(2)}
             </div>
           </div>
 
-          {/* Info Tags */}
-          <div className="space-y-2 mt-auto">
-            <p className="text-md text-gray-200">
+          <div className="space-y-4 mt-auto">
+            <p className="text-lg text-gray-100 font-medium">
               {hireDays} day hire period
             </p>
-            <div className="flex flex-wrap gap-2 text-[11px] font-semibold uppercase">
+            <div className="flex flex-wrap gap-3 text-sm font-medium">
               <span
-                className={`px-3 py-1 rounded-full ${
+                className={`glass-card px-4 py-2 rounded-full ${
                   onRoad
-                    ? "bg-green-600/20 text-green-300"
-                    : "bg-red-600/20 text-red-300"
+                    ? "text-emerald-300 border-emerald-400/30"
+                    : "text-red-300 border-red-400/30"
                 }`}
               >
                 {onRoad ? "Road Legal" : "Not Road Legal"}
               </span>
               <span
-                className={`px-3 py-1 rounded-full ${
+                className={`glass-card px-4 py-2 rounded-full ${
                   heavy
-                    ? "bg-blue-600/20 text-blue-300"
-                    : "bg-yellow-600/20 text-yellow-300"
+                    ? "text-blue-300 border-blue-400/30"
+                    : "text-amber-300 border-amber-400/30"
                 }`}
               >
                 {heavy ? "Heavy Waste" : "Light Waste Only"}
@@ -67,13 +65,12 @@ export default function SkipCard({
             </div>
           </div>
 
-          {/* Footer CTA */}
           <button
             disabled={isSelected}
-            className={`w-full mt-4 py-2 rounded-md font-bold text-md transition-all shadow-lg ${
+            className={`w-full mt-6 py-3 rounded-xl font-bold text-lg transition-all duration-300 ${
               isSelected
-                ? "bg-blue-600 text-white cursor-default"
-                : "bg-white/80 text-black hover:bg-white hover:scale-[1.01]"
+                ? "glass-card bg-blue-600/90 text-white cursor-default"
+                : "glass-card hover:bg-white/90 dark:hover:bg-white/20 hover:scale-[1.02]"
             }`}
           >
             {isSelected ? "✓ Selected" : "Select This Skip"}
